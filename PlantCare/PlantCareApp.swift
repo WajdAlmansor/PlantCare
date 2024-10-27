@@ -11,7 +11,8 @@ import SwiftUI
 struct PlantCareApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StartApp()
+          .preferredColorScheme(.dark)
         }
     }
 }
