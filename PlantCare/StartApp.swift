@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct StartApp: View {
-    @State private var Sheet = false
-    @State private var reminders: [Reminder] = [] // State to hold reminders
-    @State private var selectedReminder: Reminder? // State to track selected reminder for editing
-    
+    @State private var showSheet = false
+    @State private var selectedReminder: Reminder? = nil
+    @ObservedObject var viewModel = ReminderViewModel() // Use the ViewModel
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -14,11 +14,10 @@ struct StartApp: View {
                         .font(.largeTitle)
                     Spacer()
                 }
-                Divider()
-                    .background(Color.white)
-
-                if reminders.isEmpty {
-                    // Initial screen when no reminders are added
+                Divider().background(Color.white)
+                
+                if viewModel.reminders.isEmpty {
+                    // Display when no reminders exist
                     Image("plant")
                         .padding(.top, 50)
                     Text("Start your plant journey!")
@@ -29,11 +28,11 @@ struct StartApp: View {
                         .font(.body)
                         .foregroundColor(Color.gray)
                         .multilineTextAlignment(.center)
-                        .padding(.horizontal, 15.0)
+                        .padding(.horizontal, 15)
                         .padding(.top, 20)
                     
                     Button(action: {
-                        Sheet.toggle()
+                        showSheet.toggle()
                     }) {
                         Text("Set a plant Reminder")
                             .bold()
@@ -44,46 +43,44 @@ struct StartApp: View {
                             .cornerRadius(10)
                             .padding(.top, 50)
                     }
-                    .sheet(isPresented: $Sheet) {
-                        SetReminder(reminders: $reminders) // Pass reminders to SetReminder
+                    .sheet(isPresented: $showSheet) {
+                        SetReminder(viewModel: viewModel)
                     }
                     
-                } else if reminders.allSatisfy({ $0.isCompleted }) {
-                    // All reminders are completed view
+                } else if viewModel.reminders.allSatisfy({ $0.isCompleted }) {
+                    // Display when all reminders are completed
                     VStack {
                         Image("Plant2")
-                            .padding(.top,100)
+                            .padding(.top, 100)
                         Text("All Done!🎉")
                             .bold()
                             .font(.title)
-                        
                         Text("All Reminders Completed")
                             .font(.body)
                             .foregroundColor(Color.gray)
                             .multilineTextAlignment(.center)
-                            .padding(.horizontal, 15.0)
+                            .padding(.horizontal, 15)
                     }
-                    
                     VStack{
-                        Spacer()
-                        // "New Reminder" button when all tasks are completed
-                        HStack() {
+                        Spacer() // Push the button to the bottom
+                        
+                        HStack {
                             Image(systemName: "plus.circle.fill")
                                 .foregroundColor(Color(red: 40/255, green: 224/255, blue: 168/255))
                                 .font(.system(size: 25))
                             
-                            NavigationLink(destination: SetReminder(reminders: $reminders)) {
+                            NavigationLink(destination: SetReminder(viewModel: viewModel)) {
                                 Text("New Reminder")
                                     .font(.title3)
                                     .foregroundColor(Color(red: 40/255, green: 224/255, blue: 168/255))
                             }
                         }
                         .padding(.leading)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(maxWidth: .infinity, alignment: .leading) 
                     }
-                   
+                    // Align to the left
                 } else {
-                    // Task Check when reminders are available
+                    // Display reminders when they exist
                     VStack {
                         Text("Today")
                             .font(.title)
@@ -93,7 +90,7 @@ struct StartApp: View {
                     .padding()
                     
                     ScrollView {
-                        ForEach($reminders) { $reminder in
+                        ForEach($viewModel.reminders) { $reminder in
                             VStack(alignment: .leading, spacing: 5) {
                                 HStack {
                                     Image(systemName: "location")
@@ -120,7 +117,7 @@ struct StartApp: View {
                                     // Button to trigger the sheet for editing the reminder
                                     Button(action: {
                                         selectedReminder = reminder
-                                        Sheet.toggle()
+                                        showSheet.toggle()
                                     }) {
                                         Text(reminder.plantName)
                                             .font(.title)
@@ -159,12 +156,12 @@ struct StartApp: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    HStack() {
+                    HStack {
                         Image(systemName: "plus.circle.fill")
                             .foregroundColor(Color(red: 40/255, green: 224/255, blue: 168/255))
                             .font(.system(size: 25))
                         
-                        NavigationLink(destination: SetReminder(reminders: $reminders)) {
+                        NavigationLink(destination: SetReminder(viewModel: viewModel)) {
                             Text("New Reminder")
                                 .font(.title3)
                                 .foregroundColor(Color(red: 40/255, green: 224/255, blue: 168/255))
@@ -173,12 +170,13 @@ struct StartApp: View {
                     .padding()
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                
                 Spacer()
             }
            .padding()
            // Present the EditReminder sheet when a reminder is selected
            .sheet(item: $selectedReminder) { reminder in
-               EditReminder(reminder: $reminders[reminders.firstIndex(where: { $0.id == reminder.id })!], reminders: $reminders)
+               EditReminder(viewModel: viewModel, reminder: reminder)
            }
         }
     }

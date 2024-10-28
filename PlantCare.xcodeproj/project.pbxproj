@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B30207012CCFAA1200933D55 /* PlantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30207002CCFAA1200933D55 /* PlantModel.swift */; };
+		B30207052CCFADD400933D55 /* PlantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30207042CCFADD400933D55 /* PlantViewModel.swift */; };
 		B338DB032CC53C0F0033F0D2 /* PlantCareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338DB022CC53C0F0033F0D2 /* PlantCareApp.swift */; };
 		B338DB072CC53C100033F0D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B338DB062CC53C100033F0D2 /* Assets.xcassets */; };
 		B338DB0A2CC53C100033F0D2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B338DB092CC53C100033F0D2 /* Preview Assets.xcassets */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B30207002CCFAA1200933D55 /* PlantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantModel.swift; sourceTree = "<group>"; };
+		B30207042CCFADD400933D55 /* PlantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantViewModel.swift; sourceTree = "<group>"; };
 		B338DAFF2CC53C0F0033F0D2 /* PlantCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlantCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B338DB022CC53C0F0033F0D2 /* PlantCareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCareApp.swift; sourceTree = "<group>"; };
 		B338DB062CC53C100033F0D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -59,6 +63,8 @@
 				B338DB122CC5488C0033F0D2 /* StartApp.swift */,
 				B338DB102CC547C40033F0D2 /* SetReminder.swift */,
 				B3AC58FE2CCEB1F000B2BAA1 /* EditReminder.swift */,
+				B30207002CCFAA1200933D55 /* PlantModel.swift */,
+				B30207042CCFADD400933D55 /* PlantViewModel.swift */,
 				B338DB062CC53C100033F0D2 /* Assets.xcassets */,
 				B338DB082CC53C100033F0D2 /* Preview Content */,
 			);
@@ -144,6 +150,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3AC58FF2CCEB1F000B2BAA1 /* EditReminder.swift in Sources */,
+				B30207052CCFADD400933D55 /* PlantViewModel.swift in Sources */,
+				B30207012CCFAA1200933D55 /* PlantModel.swift in Sources */,
 				B338DB132CC5488C0033F0D2 /* StartApp.swift in Sources */,
 				B338DB112CC547C40033F0D2 /* SetReminder.swift in Sources */,
 				B338DB032CC53C0F0033F0D2 /* PlantCareApp.swift in Sources */,

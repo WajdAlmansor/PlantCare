@@ -2,12 +2,10 @@ import SwiftUI
 
 struct EditReminder: View {
     @Environment(\.dismiss) var dismiss
+    @ObservedObject var viewModel: ReminderViewModel
 
     // Binding to the reminder being edited
-    @Binding var reminder: Reminder
-    
-    // Binding to the reminders list to allow deletion
-    @Binding var reminders: [Reminder]
+    @State var reminder: Reminder
     
     var body: some View {
         NavigationStack {
@@ -31,7 +29,7 @@ struct EditReminder: View {
                     Spacer()
                     
                     Button(action: {
-                        // You can perform any additional actions to save or update the reminder here
+                        viewModel.editReminder(reminder)
                         dismiss()
                     }) {
                         Text("Save")
@@ -113,9 +111,7 @@ struct EditReminder: View {
 
                 VStack {
                     Button(action: {
-                        if let index = reminders.firstIndex(where: { $0.id == reminder.id }) {
-                            reminders.remove(at: index)
-                        }
+                        viewModel.deleteReminder(reminder)
                         dismiss()
                     }) {
                         Text("Delete Reminder")
@@ -137,10 +133,5 @@ struct EditReminder: View {
 }
 
 #Preview {
-    @State var mockReminders: [Reminder] = [
-        Reminder(plantName: "Pothos", room: .bedroom, light: .fullSun, waterDays: .daily, waterAmount: .one)
-    ]
-    
-    // Pass the state as a binding to the EditReminder preview
-    return EditReminder(reminder: .constant(mockReminders[0]), reminders: .constant(mockReminders))
+    EditReminder(viewModel: ReminderViewModel(), reminder: Reminder(plantName: "Pothos", room: .bedroom, light: .fullSun, waterDays: .daily, waterAmount: .one))
 }
