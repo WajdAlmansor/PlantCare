@@ -59,12 +59,9 @@
 		B338DB012CC53C0F0033F0D2 /* PlantCare */ = {
 			isa = PBXGroup;
 			children = (
-				B338DB022CC53C0F0033F0D2 /* PlantCareApp.swift */,
-				B338DB122CC5488C0033F0D2 /* StartApp.swift */,
-				B338DB102CC547C40033F0D2 /* SetReminder.swift */,
-				B3AC58FE2CCEB1F000B2BAA1 /* EditReminder.swift */,
-				B30207002CCFAA1200933D55 /* PlantModel.swift */,
-				B30207042CCFADD400933D55 /* PlantViewModel.swift */,
+				B376E0972CD1472C009CE2DE /* View */,
+				B376E0962CD1066F009CE2DE /* ViewModel */,
+				B376E0952CD10660009CE2DE /* Model */,
 				B338DB062CC53C100033F0D2 /* Assets.xcassets */,
 				B338DB082CC53C100033F0D2 /* Preview Content */,
 			);
@@ -77,6 +74,33 @@
 				B338DB092CC53C100033F0D2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B376E0952CD10660009CE2DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B30207002CCFAA1200933D55 /* PlantModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B376E0962CD1066F009CE2DE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B30207042CCFADD400933D55 /* PlantViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B376E0972CD1472C009CE2DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B338DB022CC53C0F0033F0D2 /* PlantCareApp.swift */,
+				B338DB122CC5488C0033F0D2 /* StartApp.swift */,
+				B338DB102CC547C40033F0D2 /* SetReminder.swift */,
+				B3AC58FE2CCEB1F000B2BAA1 /* EditReminder.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +312,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PlantCare/Preview Content\"";
+				DEVELOPMENT_TEAM = WBAAMR6V99;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -316,6 +341,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PlantCare/Preview Content\"";
+				DEVELOPMENT_TEAM = WBAAMR6V99;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

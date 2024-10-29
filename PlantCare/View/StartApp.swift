@@ -39,7 +39,7 @@ struct StartApp: View {
                             .foregroundColor(.black)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color.green)
+                            .background(Color.color)
                             .cornerRadius(10)
                             .padding(.top, 50)
                     }
