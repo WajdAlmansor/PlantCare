@@ -1,4 +1,4 @@
-#PLANTO🪴
+# PLANTO🪴
 
 # 🔍Overview
 Planto is a plant care reminder app that allows users to add plants to their personal collection, each plant entry could include care information such as sunlight, and watering. It's designed to help users manage and care for their plants effortlessly. It allows users to track multiple plants and set customized reminders for essential plant care tasks.
